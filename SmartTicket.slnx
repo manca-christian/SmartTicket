@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="SmartTicket.API/SmartTicket.API.csproj" />
+  <Project Path="SmartTicket.Application/SmartTicket.Application.csproj" />
+  <Project Path="SmartTicket.Domain/SmartTicket.Domain.csproj" />
+  <Project Path="SmartTicket.Infrastructure/SmartTicket.Infrastructure.csproj" />
+  <Project Path="SmartTicket.IntegrationTests/SmartTicket.IntegrationTests.csproj" />
+  <Project Path="SmartTicket.UnitTests/SmartTicket.UnitTests.csproj" />
+</Solution>

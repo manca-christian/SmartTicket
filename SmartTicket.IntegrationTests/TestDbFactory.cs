@@ -1,0 +1,30 @@
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using SmartTicket.Infrastructure.Persistence;
+
+namespace SmartTicket.IntegrationTests;
+
+public sealed class TestDbFactory : IDisposable
+{
+    private readonly SqliteConnection _connection;
+
+    public TestDbFactory()
+    {
+        _connection = new SqliteConnection("Data Source=:memory:");
+        _connection.Open();
+    }
+
+    public AppDbContext CreateDbContext()
+    {
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseSqlite(_connection)
+            .EnableSensitiveDataLogging()
+            .Options;
+
+        var db = new AppDbContext(options);
+        db.Database.EnsureCreated();
+        return db;
+    }
+
+    public void Dispose() => _connection.Dispose();
+}
